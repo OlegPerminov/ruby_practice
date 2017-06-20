@@ -11,12 +11,8 @@ class DigitVisualize
     nine =  ["  __ ", " |  |", "  __ ", "    |", "  __ "]
     zero =  ["  __ ", " |  |", " |  |", " |  |", "  __ "]
 
-    @digit_hash =
-    { "1" => one, "2" => two,
-      "3" => three, "4" => four,
-      "5" => five, "6" => six,
-      "7" => seven, "8" => eight,
-      "9" => nine, "0" => zero }
+    @digit_array = [zero, one, two, three, four,
+      five, six, seven, eight, nine]
   end
 
   def print_lcd(input_number)
@@ -28,8 +24,11 @@ class DigitVisualize
 
   def get_digit(input_string)
     output_string = ["", "", "", "", ""]
-    input_string.each_char do |letter|
-      temp_string = @digit_hash[letter]
+    number_array = []
+    input_string.each_char { |char| number_array << char.to_i }
+
+    number_array.each do |index|
+      temp_string = @digit_array[index]
       for line in 0...temp_string.length
         output_string[line] += temp_string[line]
       end

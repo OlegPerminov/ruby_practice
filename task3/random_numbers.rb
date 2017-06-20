@@ -1,25 +1,32 @@
 class RandomArray
-  def get_rnd_number(array)
-    conditional_array = []
-    array.each do |each|
-      conditional_array << true
-    end
+  attr_accessor :array, :arr_length
 
-    count = array.length
-    while count != 0
-      rnd_index = rand(array.size)
-      if conditional_array[rnd_index] == true
-        print array[rnd_index].to_s + " "
-        conditional_array[rnd_index] = false
-        count -= 1
-      end
+  def initialize(array)
+    @array = array
+    @length = array.length
+  end
+
+  def get_rnd_item
+    if @length > 0
+      rnd_index = rand(@length)
+      rnd_number = @array[rnd_index]
+      @array[@length-1], @array[rnd_index] = @array[rnd_index], @array[@length-1]
+      @length -= 1
+      rnd_number
+    else
+      "Array is empty!"
     end
   end
 end
 
-init_array = [4, 8, 15, 16, 23, 42, 7, 11]
+init_array = [1, 2, 3, 4, 5]
 puts "Initial array is: \n#{init_array}"
 
-my_array = RandomArray.new
-print "Random numbers from initial array is: \n"
-print my_array.get_rnd_number(init_array)
+my_array = RandomArray.new(init_array)
+puts "Random number from initial array is:"
+puts my_array.get_rnd_item
+puts my_array.get_rnd_item
+puts my_array.get_rnd_item
+puts my_array.get_rnd_item
+puts my_array.get_rnd_item
+puts my_array.get_rnd_item

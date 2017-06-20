@@ -7,7 +7,7 @@ class Circle
     @radius = r
   end
 
-  def check_points(input_array)
+  def print_incoming_points(input_array)
     print check(input_array).to_s + "\n"
   end
 
@@ -16,13 +16,15 @@ class Circle
   def check(input_points)
     areas_points = []
     input_points.each do |coord|
-      if (coord[0] - @coord_x)**2 \
-         + (coord[1] - @coord_y)**2 \
-         <= @radius**2
+      if in_circle?(coord)
          areas_points << coord
       end
     end
     areas_points
+  end
+
+  def in_circle?(coord)
+    (coord[0] - @coord_x)**2 + (coord[1] - @coord_y)**2 <= @radius**2
   end
 end
 
@@ -34,4 +36,4 @@ my_circle = Circle.new(0, 0, 1)
 
 print "The circle with center in x = #{my_circle.coord_x}, \
 y = #{my_circle.coord_y} and radius = #{my_circle.radius} have: \n"
-my_circle.check_points(test_points)
+my_circle.print_incoming_points(test_points)

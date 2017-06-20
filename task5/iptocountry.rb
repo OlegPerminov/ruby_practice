@@ -1,4 +1,7 @@
 class MyIp
+  require 'csv'
+  require 'ipaddr'
+
   def print_country(input_ip)
     encoded_ip = encode(input_ip)
     puts get_country(get_database, encoded_ip)
@@ -7,19 +10,12 @@ class MyIp
   private
 
   def encode(input_string)
-    ip_str_array = input_string.split('.')
-    ip_arr = ip_str_array.map(&:to_i)
-    ip_arr[0] * (256**3) + ip_arr[1] * (256**2) + ip_arr[2] * 256 + ip_arr[3]
+    ipaddr1 = IPAddr.new(input_string)
+    ipaddr1.to_i
   end
 
   def get_database
-    database = []
-    IO.foreach('IpToCountry.csv') do |line|
-      unless line.include? '#'
-        database << line.chomp!.gsub!(/["]/, '').split(/[,]/)
-      end
-    end
-    database
+    CSV.read('IpToCountry.csv', encoding:'iso-8859-1', skip_lines: /[#]/)
   end
 
   def get_country(database_array, number = 0)
