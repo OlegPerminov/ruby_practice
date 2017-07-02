@@ -1,8 +1,8 @@
 module MyCounter
   def self.numbers_count(first_array, second_array)
     array = first_array + second_array
-    array.flatten!
-    array.compact!
+    array = array.flatten
+    array = array.compact
     array.each_with_object(Hash.new(0)) do |number, count|
       count[number] += 1
     end
