@@ -5,7 +5,7 @@ class MyIp
 
   def initialize
     database = {}
-    CSV.foreach('IpToCountry.csv', encoding:'iso-8859-1', \
+    CSV.foreach('IpToCountry.csv', encoding: 'iso-8859-1', \
       converters: :numeric, skip_lines: /[#]/) do |row|
       database[row[0]..row[1]] = row[4]
     end

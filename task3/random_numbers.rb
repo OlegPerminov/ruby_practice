@@ -10,7 +10,7 @@ class RandomArray
     if @length > 0
       rnd_index = rand(@length)
       rnd_number = @array[rnd_index]
-      @array[@length-1], @array[rnd_index] = @array[rnd_index], @array[@length-1]
+      @array[@length - 1], @array[rnd_index] = @array[rnd_index], @array[@length - 1]
       @length -= 1
       rnd_number
     else

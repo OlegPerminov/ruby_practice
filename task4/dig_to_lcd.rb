@@ -1,15 +1,15 @@
 class DigitVisualize
   def initialize
-    one =   ["     ", "    |", "    |", "    |", "    |"]
-    two =   ["  __ ", "    |", "  __ ", " |   ", "  __ "]
+    one   = ["     ", "    |", "    |", "    |", "    |"]
+    two   = ["  __ ", "    |", "  __ ", " |   ", "  __ "]
     three = ["  __ ", "    |", "  __ ", "    |", "  __ "]
-    four =  ["     ", " |  |", "  __ ", "    |", "    |"]
-    five =  ["  __ ", " |   ", "  __ ", "    |", "  __ "]
-    six =   ["  __ ", " |   ", "  __ ", " |  |", "  __ "]
+    four  = ["     ", " |  |", "  __ ", "    |", "    |"]
+    five  = ["  __ ", " |   ", "  __ ", "    |", "  __ "]
+    six   = ["  __ ", " |   ", "  __ ", " |  |", "  __ "]
     seven = ["  __ ", "    |", "    |", "    |", "    |"]
     eight = ["  __ ", " |  |", "  __ ", " |  |", "  __ "]
-    nine =  ["  __ ", " |  |", "  __ ", "    |", "  __ "]
-    zero =  ["  __ ", " |  |", " |  |", " |  |", "  __ "]
+    nine  = ["  __ ", " |  |", "  __ ", "    |", "  __ "]
+    zero  = ["  __ ", " |  |", " |  |", " |  |", "  __ "]
 
     @digit_array = [zero, one, two, three, four,
       five, six, seven, eight, nine]
@@ -37,5 +37,5 @@ class DigitVisualize
   end
 end
 
-printing_number = ARGV[0] != nil ? ARGV[0] : "1234567890"
+printing_number = ARGV[0].nil? ? "1234567890" : ARGV[0]
 DigitVisualize.new.print_lcd(printing_number)
